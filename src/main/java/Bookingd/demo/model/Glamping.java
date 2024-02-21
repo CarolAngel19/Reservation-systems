@@ -13,4 +13,5 @@ public class Glamping {
     private String name;
     private Long capacity;
     private String description;
+    private String image;
 }

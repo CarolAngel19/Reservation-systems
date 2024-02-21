@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/booking/glamping/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class GlampingController {
     @Autowired
     private GlampingService glampingService;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/booking/user/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -30,6 +31,16 @@ public class UserController {
     public ResponseEntity<?> getAllUserById(@PathVariable("id") Long id){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(userService.getUsersById(id));
+        }catch (Exception e){
+            System.out.println("Error get all users");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body((e.getMessage()));
+        }
+    }
+
+    @GetMapping("name/{name}")
+    public ResponseEntity<?> getUserByName(@PathVariable("name") String name){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getUsersByName(name));
         }catch (Exception e){
             System.out.println("Error get all users");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body((e.getMessage()));
@@ -57,7 +68,8 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserDto userDto){
+    public ResponseEntity<?> updateUser(@PathVariable Long id,
+                                        @RequestBody UserDto userDto){
         try {
             User updatedUser = userService.updateUser(id, userDto);
             return ResponseEntity.status(HttpStatus.OK).body(updatedUser);

@@ -27,6 +27,7 @@ public class GlampingService {
         newGlamping.setName(glampingDto.getName());
         newGlamping.setCapacity(glampingDto.getCapacity());
         newGlamping.setDescription(glampingDto.getDescription());
+        newGlamping.setImage(glampingDto.getImage());
 
         return iGlampingRepository.save(newGlamping);
     }
@@ -48,6 +49,7 @@ public class GlampingService {
         existinGlamping.setName(glampingDto.getName());
         existinGlamping.setCapacity(glampingDto.getCapacity());
         existinGlamping.setDescription(glampingDto.getDescription());
+        existinGlamping.setImage(glampingDto.getImage());
 
         return iGlampingRepository.save(existinGlamping);
     }

@@ -8,4 +8,5 @@ public class GlampingDto {
     private String name;
     private Long capacity;
     private String description;
+    private String image;
 }
